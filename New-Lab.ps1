@@ -30,4 +30,7 @@ $Assignment = New-AzureRmPolicyAssignment -Name $PolicyAssignmentName -DisplayNa
                 -PolicyParameter $PolicyComponents['Values']
 
 # Deploy the ARM template
-New-AzureRmResourceGroupDeployment -Name lab-resources -ResourceGroupName $Lab -TemplateFile .\infrastructure\arm-template.json
+$TemplatePath = ".\infrastructure\arm-template.json"
+if (Test-Path $TemplatePath -PathType Leaf) {
+    New-AzureRmResourceGroupDeployment -Name lab-resources -ResourceGroupName $Lab -TemplateFile $TemplatePath
+}
