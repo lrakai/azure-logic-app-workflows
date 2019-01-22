@@ -30,6 +30,13 @@
                 "strongType": "type",
                 "displayName": "Allowed resources"
             }
+        },
+        "allowedStorageSkus": {
+            "type": "array",
+            "metadata": {
+                "description": "The list of allowed Storage SKUs",
+                "displayName": "Allowed Storage SKUs"
+            }
         }
     },
     "displayName": "Allowed locations, and services",
@@ -48,6 +55,20 @@
                         "field": "location",
                         "in": "[parameters('allowedLocations')]"
                     }
+                },
+                {
+                    "allOf": [
+                        {
+                            "field": "type",
+                            "equals": "Microsoft.Storage/storageAccounts/sku.name"
+                        },
+                        {
+                            "not": {
+                                "field": "Microsoft.Storage/storageAccounts/sku.name",
+                                "in": "[parameters('allowedStorageSkus')]"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -67,7 +88,13 @@
         "allowedServices": {
             "value": [
                 "Microsoft.Logic/workflows",
-                "Microsoft.Web/sites"
+                "Microsoft.Web/sites",
+                "Microsoft.Storage/storageAccounts"
+            ]
+        },
+        "allowedStorageSkus": {
+            "value": [
+                "Standard_LRS"
             ]
         }
     }
