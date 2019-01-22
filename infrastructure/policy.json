@@ -88,7 +88,7 @@
         "allowedServices": {
             "value": [
                 "Microsoft.Logic/workflows",
-                "Microsoft.Web/sites",
+                "Microsoft.Web/connections",
                 "Microsoft.Storage/storageAccounts"
             ]
         },
