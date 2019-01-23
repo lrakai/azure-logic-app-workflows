@@ -2,6 +2,8 @@
 
 Demonstrate how to create and manage workflows using Azure Logic Apps
 
+![Final Environment](https://user-images.githubusercontent.com/3911650/51628261-cd38f080-1f01-11e9-8eca-e50a465f57a7.png)
+
 ## Getting Started
 
 An Azure RM template is included in `infrastructure/` to create the environment:
